@@ -5,6 +5,7 @@
 ## 目标
 
 - 🇨🇳 中国大陆网站 / App 优先 `DIRECT`
+- 💬 微信、企业微信、微信支付和小程序显式 `DIRECT`
 - ✈️ Telegram 强制 `PROXY`
 - 💬 WhatsApp 强制 `PROXY`
 - 📞 Apple FaceTime / iMessage 优先 `DIRECT`
@@ -19,14 +20,17 @@
 
 `Wayne-China-TG-WA-Push.conf`
 
-当前版本：**V1.1**
+当前版本：**V1.2**
 
-### V1.1 变化
+### V1.2 变化
 
-- 新增 Apple FaceTime / iMessage 显式直连
-- 新增腾讯会议核心域名显式直连
-- 保留 Telegram / WhatsApp 的独立代理规则
-- 保留 APNs / Apple 系统服务直连策略
+- 修复 README 已写 V1.1、实际配置仍为 V1.0 的版本不一致
+- Apple FaceTime / iMessage / iCloud / APNs 显式直连
+- 腾讯会议及 VooV Meeting 核心域名显式直连
+- 微信、微信支付、小程序、企业微信 / WeCom 显式直连
+- 引入持续维护的 WeChat 与 Tencent 远程规则集
+- Telegram / WhatsApp 核心域名和独立规则集继续强制代理
+- APNs 保持直连，不启用 APNs Push Fix
 
 ## 网络导入
 
@@ -58,8 +62,10 @@ Shadowrocket：
 
 | 服务 | 路由 |
 |---|---|
-| 微信 / 淘宝 / 高德 / 国内 App | DIRECT |
-| 腾讯会议 | DIRECT |
+| 微信 / 微信支付 / 小程序 | DIRECT |
+| 企业微信 / WeCom | DIRECT |
+| 淘宝 / 高德 / 国内 App | DIRECT |
+| 腾讯会议 / VooV Meeting | DIRECT |
 | FaceTime / iMessage | DIRECT |
 | Apple / iCloud / APNs | DIRECT |
 | Telegram | PROXY |
@@ -86,8 +92,11 @@ Shadowrocket：
 | `facetime.apple.com` | DIRECT |
 | `meeting.tencent.com` | DIRECT |
 | `wemeet.tencent.com` | DIRECT |
+| `voovmeeting.com` | DIRECT |
 | `baidu.com` | DIRECT |
 | `weixin.qq.com` | DIRECT |
+| `work.weixin.qq.com` | DIRECT |
+| `wecom.cn` | DIRECT |
 
 ## Telegram / WhatsApp Push
 
